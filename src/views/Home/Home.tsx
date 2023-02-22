@@ -33,6 +33,13 @@ const Home = () => {
           required
           minLength={3}
         />
+        <input 
+          type="text" 
+          value={imageDetails.negativePrompt} 
+          onChange={handleChange('negativePrompt')}
+          required
+          minLength={3}
+        />
         <button type="submit">
           Submit
         </button>
