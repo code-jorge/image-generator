@@ -1,10 +1,8 @@
-import { useState } from "react"
+import { useState } from "react";
 import { generateImage } from "../../utils/api";
+import { ImageDetails } from "../../utils/types";
+import css from "./Home.module.css";
 
-interface ImageDetails {
-  prompt?: string
-  negativePrompt?: string
-}
 
 const Home = () => {
   
@@ -24,27 +22,38 @@ const Home = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input 
-          type="text" 
-          value={imageDetails.prompt} 
-          onChange={handleChange('prompt')}
-          required
-          minLength={3}
-        />
-        <input 
-          type="text" 
-          value={imageDetails.negativePrompt} 
-          onChange={handleChange('negativePrompt')}
-          required
-          minLength={3}
-        />
-        <button type="submit">
-          Submit
-        </button>
-      </form>
-    </div>
+    <main className={css.main}>
+      <div className={css.content}>
+        <div className={css.intro}>
+          <h1 className={css.title}>
+            <code>
+              Draw the impossible thanks to the power of <span className={css.titleHighlight}>AI</span>
+            </code>
+          </h1>
+        </div>
+        <div className={css.images}>
+          <img src="/images/carrousel-01.jpg" alt='' className={css.image} />
+          <img src="/images/carrousel-02.jpg" alt='' className={css.image} />
+          <img src="/images/carrousel-03.jpg" alt='' className={css.image} />
+          <img src="/images/carrousel-04.jpg" alt='' className={css.image} />
+        </div>
+        <form className={css.form} onSubmit={handleSubmit}>
+          <input 
+            className={css.input}
+            type="text" 
+            placeholder="Dream big"
+            value={imageDetails.prompt} 
+            onChange={handleChange('prompt')}
+            required
+            minLength={3}
+          />
+          <button className={css.submit} type="submit">
+            <code className={css.submitSmall}>Go</code>
+            <code className={css.submitLarge}>Generate image</code>
+          </button>
+        </form>
+      </div>
+    </main>
   )
 }
 

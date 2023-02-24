@@ -1,4 +1,6 @@
-export const generateImage = ({ prompt, negativePrompt='' })=> {
+import { ImageDetails, ImageResult } from "./types"
+
+export const generateImage = ({ prompt, negativePrompt='' }: ImageDetails)=> {
   const url = '/api/generate-image'
   return fetch(url, {
     method: 'POST',
@@ -15,7 +17,7 @@ export const generateImage = ({ prompt, negativePrompt='' })=> {
   .then(res => res.json())
 }
 
-export const getImageResult = ({ id })=> {
+export const getImageResult = ({ id }: { id: string }): Promise<ImageResult>=> {
   const url = `/api/image-status?id=${id}`
   return fetch(url)
   .then(async res => {
