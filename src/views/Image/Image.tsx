@@ -10,14 +10,14 @@ const Gallery = ({ images=[] }: { images?: string[] }) => (
       <img src={image} alt='' className={css.image} key={index} />
     ))}
   </div>
-)
+);
 
 
 const Image = ()=> {
 
   const { id } = useParams();
 
-  const [imageResult, setImageResult] = useState<ImageResult>({})
+  const [imageResult, setImageResult] = useState<ImageResult>({});
 
   useEffect(() => {
     if (!id) return;
@@ -27,10 +27,10 @@ const Image = ()=> {
   return (
     <main className={css.main}>
       {imageResult.status === 'succeeded' && (
-        <Gallery images={imageResult.output} />
+        <Gallery images={imageResult.output || []} />
       )}
     </main>
-  )
-}
+  );
+};
 
-export default Image
+export default Image;

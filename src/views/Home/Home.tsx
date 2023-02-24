@@ -1,12 +1,14 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { generateImage } from "../../utils/api";
 import { ImageDetails } from "../../utils/types";
 import css from "./Home.module.css";
 
-
 const Home = () => {
   
   const [imageDetails, setImageDetails] = useState<ImageDetails>({});
+
+  const navigate = useNavigate();
 
   const handleChange = (key: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
     setImageDetails({ ...imageDetails, [key]: e.target.value });
@@ -14,10 +16,11 @@ const Home = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(imageDetails);
     generateImage({ 
       prompt: imageDetails.prompt,
       negativePrompt: imageDetails.negativePrompt
+    }).then(({ id }) => {
+      navigate(`/image/${id}`);
     });
   }
 
@@ -54,7 +57,7 @@ const Home = () => {
         </form>
       </div>
     </main>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

@@ -1,10 +1,10 @@
 export interface ImageDetails {
   prompt?: string
   negativePrompt?: string
-}
+};
 
 export interface ImageResult {
-  status?: string
-  error?: string
-  output?: string[]
-}
+  status?: 'starting' | 'processing' | 'succeeded' | 'failed' | 'cancelled'
+  error?: string | null
+  output?: string[] | null
+};
