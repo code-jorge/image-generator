@@ -13,9 +13,9 @@ exports.handler = async (event)=> {
   if (!id) return network.clientError("The status id is required");
 
   // Request replicate info on the image generation
-  const { status, error, output } = await checkImageResult({ id });
+  const { status, error, input, output } = await checkImageResult({ id });
 
   // Return the id back to the client
-  return network.success({ status, error, output });
+  return network.success({ status, error, input, output });
   
 }
