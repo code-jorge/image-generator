@@ -1,51 +1,44 @@
-# Getting Started with Create React App
+## Image Generator (Ima•gen)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple website that generates images using [Replicate](https://replicate.com) to generate images from a text prompt.
 
-## Available Scripts
+### Frontend
 
-In the project directory, you can run:
+The frontend uses:
 
-### `npm start`
+- [React](https://reactjs.org/)
+- [Typescript](https://www.typescriptlang.org/)
+- [CSS Modules](https://github.com/css-modules/css-modules)
+- [React Router](https://reactrouter.com/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+It's bootstrapped with [Create React App](https://create-react-app.dev/)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Backend
 
-### `npm test`
+The backend uses [Netlify Functions](https://www.netlify.com/products/functions/) to query the [Replicate API](https://replicate.com/docs/reference/http) and generate images and forward the results to the frontend.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The reason we do this is to avoid exposing the `REPLICATE_API_TOKEN` to the frontend (and therefore any evil users).
 
-### `npm run build`
+## Making it work
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Get your API token from Replicate
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+If you don't have an account with [Replicate](https://replicate.com), create it! It's really fast to do.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Once you have your account, get your API token from the [Account](https://replicate.com/account) page.
 
-### `npm run eject`
+### Deploy to Netlify
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+If you don't have an account at [Netlify](https://netlify.com), create it! You'll love it.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+If you already have an account, you can deploy this repository to Netlify using the button below.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/code-jorge/image-generator)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Adding the API token to Netlify
 
-## Learn More
+Once you've deployed to Netlify, you'll need to add the `REPLICATE_API_TOKEN` environment variable to your Netlify site.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+To do this, go to your site's settings and click on the `Build & deploy` tab. Scroll down to the **Environment** section and click **Add a variable**.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-
-## Deploy to Netlify
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/code-jorge/image-generator.git)
+The variable must be named `REPLICATE_API_TOKEN` and contain the token you got from **Replicate**. Once that's done, you're good to go! Your site should be capable of generating images within the rate limit of your **Replicate** account.
