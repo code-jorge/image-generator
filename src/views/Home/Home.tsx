@@ -20,20 +20,18 @@ const Home = () => {
       prompt: imageDetails.prompt,
       negativePrompt: imageDetails.negativePrompt
     }).then(({ id }) => {
-      navigate(`/image/${id}`);
+      navigate(`/images/${id}`);
     });
   }
 
   return (
     <main className={css.main}>
       <div className={css.content}>
-        <div className={css.intro}>
-          <h1 className={css.title}>
-            <code>
-              Draw the impossible thanks to the power of <span className={css.titleHighlight}>AI</span>
-            </code>
-          </h1>
-        </div>
+        <h1 className={css.title}>
+          <code>
+            Draw the impossible thanks to the power of <span className={css.titleHighlight}>AI</span>
+          </code>
+        </h1>
         <div className={css.images}>
           <img src="/images/carrousel-01.jpg" alt='' className={css.image} />
           <img src="/images/carrousel-02.jpg" alt='' className={css.image} />
@@ -43,7 +41,7 @@ const Home = () => {
         <form className={css.form} onSubmit={handleSubmit}>
           <input 
             className={css.input}
-            type="text" 
+            type="text"
             placeholder="Dream big"
             value={imageDetails.prompt} 
             onChange={handleChange('prompt')}

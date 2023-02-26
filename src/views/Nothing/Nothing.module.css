@@ -1,0 +1,16 @@
+.main {
+  min-height: 100vh;
+  padding: 100px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.errorText {
+  font-size: 1.3rem;
+  line-height: 2.2rem;
+}
+
+.link {
+  color: var(--color-primary);
+}

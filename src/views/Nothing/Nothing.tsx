@@ -1,7 +1,20 @@
+import { Link } from 'react-router-dom';
+import css from './Nothing.module.css';
+
 const Nothing = ()=> {
 
   return (
-    <p>There's nothing here</p>
+    <main className={css.main}>
+      <div className={css.error}>
+        <code className={css.errorText}>
+          These are not the droids you are looking for
+          <br />
+          <Link className={css.link} to='/'>
+            Try again
+          </Link>
+        </code>
+      </div> 
+    </main>
   )
 }
 

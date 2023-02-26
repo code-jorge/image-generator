@@ -2,8 +2,8 @@ const { getImageResult } = require('../utils/replicate');
 const network = require('../utils/network');
 
 const checkImageResult = async ({ id })=> {
-  const { status, error, output } = await getImageResult({ id });
-  return { status, error, output };
+  const { status, error, input, output } = await getImageResult({ id });
+  return { status, error, input, output };
 }
 
 exports.handler = async (event)=> {

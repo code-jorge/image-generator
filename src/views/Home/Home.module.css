@@ -14,7 +14,7 @@
 }
 
 .titleHighlight {
-  color: blueviolet;
+  color: var(--color-primary);
 }
 
 .images {
@@ -27,7 +27,6 @@
 
 .image {
   margin: 1rem;
-  border: 3px solid rgba(138, 43, 226, .6);
   box-shadow: 10px 10px 20px rgb(0 57 121 / 33%);
   max-width: calc(25% - 2rem);
 }
@@ -44,23 +43,23 @@
   width: 100%;
   font-family: monospace;
   padding: 1rem;
-  border: 1px solid hsla(0, 0%, 100%, .4);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 6px;
   box-shadow: 0 0 30px rgb(0 57 121 / 30%);
   font-family: monospace;
   transition: .3s;
-  outline-color: blueviolet;
+  outline-color: var(--color-primary);
 }
 
 .input:focus {
-  box-shadow: 0 0 30px rgb(138 43 226 / 50%);
+  box-shadow: 0 0 30px rgba(var(--color-primary-rgb), 0.5);
 }
 
 .submit {
-  background-color: blueviolet;
+  background-color: var(--color-primary);
   color: white;
   border-radius: 6px;
-  border: 3px solid blueviolet;
+  border: 3px solid var(--color-primary);
   font-weight: 900;
   font-size: 1.25rem;
   padding: .75rem 1.5rem;
